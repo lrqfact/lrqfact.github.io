@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LRQFact Appendix</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Georgia, serif;
+      margin: 40px auto;
+      max-width: 900px;
+      padding: 0 20px;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 1.8em;
+    }
+
+    .note {
+      font-size: 14px;
+      color: #666;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .pdf-container {
+      position: relative;
+      width: 100%;
+      padding-top: 130%; /* Aspect ratio: 8.5/11 = 77% → ~130% is taller */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .pdf-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .fallback {
+      font-size: 14px;
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+      .note {
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Appendix for LRQFact</h1>
+  <p class="note">
+    This appendix accompanies our paper submission and is hosted anonymously for peer review.
+  </p>
+
+  <div class="pdf-container">
+    <iframe src="appendix.pdf#toolbar=0"></iframe>
+  </div>
+
+  <p class="fallback">
+    PDF not loading? <a href="appendix.pdf" target="_blank">Click here to view or download.</a>
+  </p>
+
+</body>
+</html>
