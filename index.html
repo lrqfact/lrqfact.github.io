@@ -1,79 +1,402 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>LRQFact Appendix</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      font-family: Georgia, serif;
-      margin: 40px auto;
-      max-width: 900px;
-      padding: 0 20px;
-      line-height: 1.6;
-      color: #333;
-    }
+    <meta charset="UTF-8">
+    <title>LRQ-FACT Prompts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Georgia, serif;
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: #f9f9f9;
+            color: #333;
+            line-height: 1.7;
+        }
 
-    h1 {
-      text-align: center;
-      font-size: 1.8em;
-    }
+        .tcolorbox {
+            background-color: #fcfbea;
+            border: 1px solid #888;
+            border-radius: 8px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+            overflow: hidden;
+        }
 
-    .note {
-      font-size: 14px;
-      color: #666;
-      text-align: center;
-      margin-bottom: 20px;
-    }
+        .tcolorbox-title {
+            background-color: #666;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            font-weight: bold;
+            font-variant: small-caps;
+        }
 
-    .pdf-container {
-      position: relative;
-      width: 100%;
-      padding-top: 130%; /* Aspect ratio: 8.5/11 = 77% → ~130% is taller */
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
-      overflow: hidden;
-    }
+        .tcolorbox-content {
+            padding: 1rem 1.5rem;
+            font-size: 0.95rem;
+            color: #333;
+            line-height: 1.6;
+        }
 
-    .pdf-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
+        .tcolorbox-separator {
+            border: none;
+            border-top: 1px dashed #888;
+            margin: 1rem 0 0.5rem 0;
+        }
 
-    .fallback {
-      font-size: 14px;
-      text-align: center;
-      margin-top: 12px;
-    }
+        .figure-caption {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #444;
+            margin-top: -0.5rem;
+            font-family: serif;
+        }
 
-    @media (max-width: 600px) {
-      body {
-        padding: 10px;
-      }
-      .note {
-        font-size: 13px;
-      }
-    }
-  </style>
+        ol {
+            padding-left: 1.2rem;
+        }
+
+        em {
+            display: block;
+        }
+    </style>
 </head>
+
 <body>
 
-  <h1>Appendix for LRQFact</h1>
-  <p class="note">
-    This appendix accompanies our paper submission and is hosted anonymously for peer review.
-  </p>
+    <h1>📄 LRQ-FACT: Prompt Templates</h1>
 
-  <div class="pdf-container">
-    <iframe src="appendix.pdf#view=FitH"></iframe>
-  </div>
+    <!-- Prompt 1: Image Description -->
+    <div class="tcolorbox">
+        <div class="tcolorbox-title">Image Description Prompt:</div>
+        <div class="tcolorbox-content">
+            <em>
+                Please provide a detailed and comprehensive description of the image shown. Focus on identifying all
+                visible elements including objects, people, setting, and any interactions or actions taking place.
+                Describe the colors, textures, mood, and any other notable aspects that contribute to the overall
+                context and significance of the image.
+            </em>
+        </div>
+    </div>
+    <div class="figure-caption">
+        Fig. 1: Structured prompt to generate detailed image descriptions.
+    </div>
 
-  <p class="fallback">
-    PDF not loading? <a href="appendix.pdf" target="_blank">Click here to view or download.</a>
-  </p>
+    <!-- Prompt 2: Visual Questions -->
+    <div class="tcolorbox">
+        <div class="tcolorbox-title">Visual Questions Prompt:</div>
+        <div class="tcolorbox-content">
+            <p>
+                Given the following news article <strong>[news text]</strong>, generate up to <strong>[number of
+                    questions]</strong> questions that are directly based on the news article and are designed to
+                explore visual elements that could be present in an image related to the article.
+            </p>
+
+            <p><strong>Instructions for Question Generation:</strong></p>
+            <em>
+                Focus on generating questions that are directly relevant to the news article and the visual elements
+                that could be present in an image. The questions should examine visible interactions, settings, actions,
+                text, symbols, and specific objects mentioned in the article. Additionally, include questions that
+                assess the authenticity of the image, such as whether it could have been AI-generated or contains any
+                unusual or suspicious elements.
+            </em>
+
+            <p><strong>Avoid the following in your Questions:</strong></p>
+            <em>
+                - Do not mention any names.<br>
+                - Do not ask questions about identification.<br>
+                - Do not ask about personal details.<br>
+                - Do not ask compound questions in a single sentence.
+            </em>
+
+            <p><strong>Example Questions:</strong></p>
+            <ol>
+                <li><em>What event is depicted in this image?</em></li>
+                <li><em>How are the people in the image interacting?</em></li>
+                <li><em>Is the person in the image performing [action from article]?</em></li>
+                <li><em>What are the technical aspects or tools used to create this image?</em></li>
+                <li><em>What emotions does this image evoke?</em></li>
+                <li><em>What are the main objects or elements visible in this image?</em></li>
+                <li><em>What unusual elements in the image might suggest digital manipulation or artificial
+                        creation?</em></li>
+            </ol>
+            <hr class="tcolorbox-separator">
+            <p><strong>Questions:</strong> 1., 2., ...</p>
+
+        </div>
+    </div>
+    <div class="figure-caption">
+        Fig. 2: Structured prompt to generate relevant visual questions.
+    </div>
+
+    <!-- Prompt 3: Visual Answers -->
+    <div class="tcolorbox">
+        <div class="tcolorbox-title">Visual Answers Prompt:</div>
+        <div class="tcolorbox-content">
+            <p>
+                You are an advanced AI model with access to a vast repository of knowledge and the capability of
+                answering image questions. Your task is to answer the following questions <strong>[generated
+                    questions]</strong> based on the image <strong>[image]</strong>. While a news article <strong>[news
+                    text]</strong> is provided for context, you must answer the questions solely based on the image and
+                not refer to the article’s content.
+            </p>
+
+            <p><strong>Instructions for Answer Generation:</strong></p>
+            <em>
+                - Provide accurate, clear, and concise answers to each question.<br>
+                - Your responses should be based entirely on the image.<br>
+                - Do not reference or rely on the content of the provided news article when forming your answers.<br>
+                - Each answer should be directly relevant to the question asked.
+            </em>
+
+            <p><strong>Avoid the following in your Answers:</strong></p>
+            <em>
+                - Provide accurate, clear, and concise answers to each question.<br>
+                - Your responses should be based entirely on the image.<br>
+                - Do not reference or rely on the content of the provided news article when forming your answers.<br>
+                - Each answer should be directly relevant to the question asked.
+            </em>
+            <hr class="tcolorbox-separator">
+            <p><strong>Answers:</strong> 1., 2., ...</p>
+        </div>
+    </div>
+
+    <div class="figure-caption">
+        Fig. 3: Structured prompt to generate answers for the visual questions.
+    </div>
+
+    <!-- Prompt 4: Textual Questions -->
+    <div class="tcolorbox">
+        <div class="tcolorbox-title">Textual Questions Prompt:</div>
+        <div class="tcolorbox-content">
+            <p>
+                Given the following news article <strong>[news text]</strong>, analyze the text and formulate up to
+                <strong>[number of questions]</strong> questions that probe the accuracy and verifiability of the
+                information contained in the article. These questions should be designed to identify potential
+                inaccuracies or areas that can be confirmed or challenged based on general knowledge or the text itself.
+            </p>
+
+            <p><strong>Instructions for Question Generation:</strong></p>
+            <em>
+                Focus on generating high-quality, fact-checking questions that can be answered directly through general
+                knowledge that an LLM might possess. Identify and question significant factual claims, examine dates,
+                locations, names, and other data mentioned in the article, and challenge any assumptions. The goal is to
+                produce questions that facilitate direct verification of the facts stated in the article.
+            </em>
+
+            <p><strong>Aim to Generate:</strong></p>
+            <em>
+                - Questions that challenge the accuracy of specific claims made in the article and can be answered based
+                on general knowledge.<br>
+                - Questions that explore potential inconsistencies or contradictions within the article’s content.<br>
+                - Questions that assess the logical coherence and factual basis of the article’s claims.
+            </em>
+
+            <p><strong>Avoid asking for:</strong></p>
+            <em>
+                - Information requiring external sources or verification beyond general knowledge.<br>
+                - Speculative or opinion-based questions.
+            </em>
+
+            <p><strong>Example Questions:</strong></p>
+            <ol>
+                <li><em>Does the description of the “meeting between world leaders on March 5th” align with the known
+                        schedule of diplomatic events for that time?</em></li>
+                <li><em>Is the account of “a large protest taking place in front of City Hall” consistent with known
+                        reports of protests in that area during the stated period?</em></li>
+                <li><em>Does the timeline of “economic sanctions being imposed after the incident” logically follow the
+                        typical process for such actions?</em></li>
+                <li><em>Are the historical events referenced, such as “the financial crisis of 2008”, accurately
+                        portrayed in the article?</em></li>
+            </ol>
+            <hr class="tcolorbox-separator">
+            <p><strong>Questions:</strong> 1., 2., ...</p>
+        </div>
+    </div>
+
+    <div class="figure-caption">
+        Fig. 4: Structured prompt to generate relevant textual questions.
+    </div>
+
+    <!-- Prompt 5: Textual Answers (w/o Evidence) -->
+    <div class="tcolorbox">
+        <div class="tcolorbox-title">Textual Answers (w/o Evidence) Prompt:</div>
+        <div class="tcolorbox-content">
+            <p>
+                You are an advanced AI model with access to a vast repository of knowledge. Your task is to answer the
+                following questions <strong>[generated questions]</strong> based on your built-in knowledge. While a
+                news article <strong>[news text]</strong> is provided for context, you must answer the questions solely
+                based on your own knowledge and not refer to the article’s content.
+            </p>
+
+            <p><strong>Instructions for Answering:</strong></p>
+            <em>
+                Provide accurate, clear, and concise answers to each question. Your responses should be based entirely
+                on your general knowledge and the information you have learned. Do not reference or rely on the content
+                of the provided news article when forming your answers. Each answer should be factually correct and
+                directly relevant to the question asked.
+            </em>
+            <hr class="tcolorbox-separator">
+            <p><strong>Answers:</strong> 1., 2., ...</p>
+        </div>
+    </div>
+
+    <div class="figure-caption">
+        Fig. 5: Structured prompt to generate answers based on LLM-knowledge for the relevant textual questions.
+    </div>
+
+    <!-- Prompt 6: Textual Answers (w/ Evidence) -->
+    <div class="tcolorbox">
+        <div class="tcolorbox-title">Textual Answers (w/Evidence) Prompt:</div>
+        <div class="tcolorbox-content">
+            <p>
+                You are an advanced AI tasked with evaluating the authenticity of a news article. Your task is to answer
+                the following questions <strong>[generated questions]</strong> based on the provided factual document
+                <strong>[evidence]</strong>. While a news article <strong>[news text]</strong> is provided for context,
+                you must answer the questions solely based on the provided factual document and not refer to the
+                article’s content.
+            </p>
+
+            <p><strong>Instructions for Answering:</strong></p>
+            <em>
+                Provide accurate, clear, and concise answers to each question. Your responses should be based entirely
+                on the provided factual document. If there was no factual answer for the question use your built-in
+                knowledge to answer the question. Do not reference or rely on the content of the provided news article
+                when forming your answers. Each answer should be directly relevant to the question asked.
+            </em>
+            <hr class="tcolorbox-separator">
+            <p><strong>Answers:</strong> 1., 2., ...</p>
+        </div>
+    </div>
+
+    <div class="figure-caption">
+        Fig. 6: Structured prompt to generate answers based on factual evidence for the relevant textual questions.
+    </div>
+
+    <!-- Prompt 7: Questions Quality -->
+    <div class="tcolorbox">
+        <div class="tcolorbox-title">Questions Quality Prompt:</div>
+        <div class="tcolorbox-content">
+            <p>
+                You are an advanced AI tasked with evaluating the authenticity of a news article and its accompanying
+                image. Your objective is to determine whether the provided questions <strong>[generated
+                    questions]</strong> effectively assess the accuracy, credibility, and reliability of the news
+                article text.
+            </p>
+
+            <p><strong>Instructions:</strong><br>
+                <em>Assess each question based on the following expert fact-checking criteria:</em>
+            </p>
+            <em>
+                1. Critical Thinking and Skepticism: Does the question challenge assumptions, probe deeper into claims,
+                and avoid taking information at face value?<br>
+                2. Analytical Depth: Does it break down complex statements into verifiable components?<br>
+                3. Systematic Approach: Does it follow a structured methodology in assessing sources, claims, and
+                evidence?<br>
+                4. Precision & Specificity: Is it clear, direct, and free from vague or overly broad wording?<br>
+                5. Factual Accuracy: Does it focus on verifying evidence, checking primary sources, and detecting
+                misinformation?<br>
+                6. Logical Consistency: Does it help identify contradictions, misleading narratives, or
+                inconsistencies?<br>
+                7. Source Credibility & Bias Detection: Does it evaluate the reliability of cited sources and potential
+                biases?<br>
+                8. Context Awareness: Does it consider the broader context surrounding the claim?<br>
+                9. Comparative Thinking: Does it encourage cross-referencing with established facts or alternative
+                perspectives?<br>
+                10. Repeatability & Objectivity: Can the question be applied consistently across different cases without
+                personal bias?
+            </em>
+
+            <p><strong>Rating Scale:</strong></p>
+            <em>
+                - <strong>Relevant</strong>: The question is precise, well-structured, and effectively assesses factual
+                accuracy, credibility, and logical consistency.<br>
+                - <strong>Irrelevant</strong>: The question is vague, lacks depth, or fails to critically probe the
+                credibility and factuality.
+            </em>
+            <hr class="tcolorbox-separator">
+            <p><strong>Answers:</strong> <em>Q1: [Relevant or Irrelevant]<br>
+                    Q2: [Relevant or Irrelevant]<br>
+                    ...</em></p>
+        </div>
+    </div>
+
+    <div class="figure-caption">
+        Fig. 7: Structured prompt to evaluate the quality of generated questions.
+    </div>
+
+    <!-- Prompt 8: Rule-Based Decision-Maker -->
+    <div class="tcolorbox">
+        <div class="tcolorbox-title">Rule-Based Decision-Maker Prompt:</div>
+        <div class="tcolorbox-content">
+            <p>Your objective is to determine whether the article and image are real or fake by analyzing the following
+                information:</p>
+            <p>
+                1. News Article Text: <strong>[news text]</strong><br>
+                2. Image Description: <strong>[image description]</strong><br>
+                <span style="font-size: 0.95em; color: #333;"><em>Note: This description helps verify consistency with
+                        the news text. It is generally reliable but may contain minor discrepancies, such as using
+                        different terms like “ocean” instead of “water”.</em></span><br><br>
+                3. Generated Visual Questions and Answers: <strong>[generated visual FCQs]</strong><br>
+                <span style="font-size: 0.95em; color: #333;"><em>Note: These answers were generated by an AI and may
+                        contain mistakes, such as incorrect details regarding locations, names, dates, or objects. They
+                        might also incorrectly suggest that the image has been manipulated or is AI-generated. If the
+                        answers suggest manipulation or that the image is AI-generated, this should have very low effect
+                        on your final decision, especially if the image description and news article text do not contain
+                        such indications.</em></span><br><br>
+                4. Generated Textual Questions and Answers: <strong>[generated textual FCQs]</strong><br>
+                <span style="font-size: 0.95em; color: #333;"><em>Note: These are based on the knowledge of GPT-4O,
+                        which is generally reliable but prone to hallucinations or contradictions with other provided
+                        information.</em></span>
+            </p>
+
+            <p><strong>Instructions:</strong></p>
+            <em>
+                To make an accurate judgment of the multimodal misinformation, please follow these steps:<br>
+                <strong>Step 1.</strong> Is there any credible objective evidence refuting the news description? If yes,
+                assign the label: <strong>Textual Veracity Distortion</strong>. If no, continue to Step 2.<br>
+                <strong>Step 2.</strong> Is there any credible objective evidence refuting the news image? If yes,
+                assign the label: <strong>Visual Veracity Distortion</strong>. If no, continue to Step 3.<br>
+                <strong>Step 3.</strong> Does the news caption match the content of the news image? If no, assign the
+                label: <strong>Mismatch</strong>. If yes, and none of the above applies, assign the label:
+                <strong>Real</strong>.
+            </em>
+
+            <p><strong>Additional Guidelines:</strong></p>
+            <em>
+                1. Assess Overall Consistency: ...<br>
+                2. Examine Details: ...<br>
+                3. Analyze Facial Expressions and Body Language: ...<br>
+                4. Identify Unrealistic Elements: ...<br>
+                5. Cross-Modal Consistency: ...<br>
+                6. Final Judgment: ...<br>
+                7. Select the Most Relevant Label: ...<br>
+                8. Provide a Detailed Explanation: ...
+            </em>
+
+            <p><strong>Example Output:</strong></p>
+            <em>
+                <strong>1. Final Judgment:</strong> Fake<br>
+                <strong>2. Label:</strong> Visual Veracity Distortion<br>
+                <strong>3. Explanation:</strong> The image description mentions a “cat with pink eyes”, which is highly
+                unnatural and
+                suggests the image is AI-generated. Additionally, ...
+            </em>
+            <hr class="tcolorbox-separator">
+            <p><strong>1. Final Judgment:</strong> [Real or Fake]<br>
+                <strong>2. Label:</strong> [Select one: Textual Veracity Distortion, Visual Veracity Distortion,
+                Mismatch, Real]<br>
+                <strong>3. Explanation:</strong> [Provide your explanation here]
+            </p>
+        </div>
+    </div>
+
+    <div class="figure-caption">
+        Fig. 8: Structured prompt to make the final decisions and provide an explanation.
+    </div>
 
 </body>
+
 </html>
